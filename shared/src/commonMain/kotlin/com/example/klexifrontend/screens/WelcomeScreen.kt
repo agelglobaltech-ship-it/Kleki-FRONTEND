@@ -7,11 +7,15 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.klexifrontend.components.KlexiButton
@@ -23,6 +27,26 @@ import com.example.klexifrontend.theme.KlexiColors
 
 @Composable
 fun WelcomeScreen(stateManager: AppStateManager) {
+    // Texto con cada letra de un color distinto (arcoíris)
+    val textoArcoiris = remember {
+        val texto = "Aprende • Juega • Avanza"
+        val totalLetras = texto.count { it.isLetter() }
+        buildAnnotatedString {
+            var i = 0
+            texto.forEach { c ->
+                if (c.isLetter()) {
+                    val hue = i / (totalLetras - 1f) * 300f
+                    withStyle(SpanStyle(color = Color.hsv(hue, 0.85f, 1f))) {
+                        append(c)
+                    }
+                    i++
+                } else {
+                    append(c)
+                }
+            }
+        }
+    }
+
     PlatformBackground(showBottomGround = true) {
         Column(
             modifier = Modifier
@@ -58,7 +82,7 @@ fun WelcomeScreen(stateManager: AppStateManager) {
                 )
 
                 Text(
-                    text = "Aprende • Juega • Avanza",
+                    text = textoArcoiris,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = KlexiColors.PurplePrimary
