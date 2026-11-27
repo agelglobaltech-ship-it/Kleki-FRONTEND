@@ -20,6 +20,7 @@ enum class AppScreen {
     REGISTER_FORM,
     STUDENT_HOME,
     GAME_PLAY,
+    SENTENCE_GAME,
     KLEXI_SHOP,
     TUTOR_PANEL,
     ADMIN_PANEL,

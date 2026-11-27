@@ -128,7 +128,7 @@ fun WelcomeScreen(stateManager: AppStateManager) {
 
                     KlexiButton(
                         text = "Comenzar  ➔",
-                        onClick = { stateManager.currentScreen = AppScreen.ROLE_SELECTION },
+                        onClick = { stateManager.currentScreen = AppScreen.SENTENCE_GAME },
                         modifier = Modifier.fillMaxWidth()
                     )
                 }

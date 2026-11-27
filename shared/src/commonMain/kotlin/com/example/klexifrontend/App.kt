@@ -22,6 +22,7 @@ fun App() {
             AppScreen.REGISTER_FORM -> RegisterFormScreen(stateManager)
             AppScreen.STUDENT_HOME -> StudentDashboardScreen(stateManager)
             AppScreen.GAME_PLAY -> GamePlayScreen(stateManager)
+            AppScreen.SENTENCE_GAME -> SentenceGameScreen(stateManager, onBack = { stateManager.currentScreen = AppScreen.WELCOME })
             AppScreen.KLEXI_SHOP -> KlexiShopScreen(stateManager)
             AppScreen.TUTOR_PANEL -> TutorDashboardScreen(stateManager)
             AppScreen.ADMIN_PANEL -> AdminDashboardScreen(stateManager)
