@@ -10,7 +10,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -50,12 +52,39 @@ fun WelcomeScreen(stateManager: AppStateManager) {
 
                 Spacer(modifier = Modifier.height(8.dp))
 
-                Text(
-                    text = "Klexi",
-                    fontSize = 54.sp,
-                    fontWeight = FontWeight.ExtraBold,
-                    color = KlexiColors.TextDark
-                )
+                //Titulo App
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier.padding(vertical = 4.dp)
+                ) {
+                    val arcadeRainbowBrush = Brush.horizontalGradient(
+                        colors = listOf(
+                            Color(0xFFFF3366), // Hot Red / Pink
+                            Color(0xFFFF9F1A), // Bright Orange
+                            Color(0xFFFFE600), // Arcade Yellow
+                            Color(0xFF00E676), // Neon Green
+                            Color(0xFF00B0FF), // Neon Cyan/Blue
+                            Color(0xFF9C27B0)  // Deep Purple
+                        )
+                    )
+
+                    // Retro arcade 3D block shadow
+                    Text(
+                        text = "Klexi",
+                        fontSize = 62.sp,
+                        fontWeight = FontWeight.Black,
+                        color = Color(0xFF1A0B36),
+                        modifier = Modifier.offset(x = 4.dp, y = 4.dp)
+                    )
+
+                    // Foreground vibrant rainbow text
+                    Text(
+                        text = "Klexi",
+                        fontSize = 62.sp,
+                        fontWeight = FontWeight.Black,
+                        style = TextStyle(brush = arcadeRainbowBrush)
+                    )
+                }
 
                 Text(
                     text = "Aprende • Juega • Avanza",
